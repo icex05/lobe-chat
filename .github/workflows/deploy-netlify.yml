@@ -35,8 +35,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NODE_OPTIONS: "--max-old-space-size=6144"
-          # ⚡ 核心修复：强制关闭 Edge 模式，让不兼容的中间件回退到标准 Node.js 环境中稳定运行
-          NETLIFY_NEXT_EDGE_MIDDLEWARE: "false"
+          # 替换为 Netlify 官方生效的 Edge 禁用变量
+          NEXT_DISABLE_NETLIFY_EDGE: "true"
           NEXT_DISABLE_EDGE_IMAGES: "true"
 
       - name: Deploy to Netlify Production
