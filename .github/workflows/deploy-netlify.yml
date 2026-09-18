@@ -26,14 +26,14 @@ jobs:
         run: pnpm install
 
       - name: Build Netlify Next.js Artifacts
-        run: npx netlify build
+        run: npx netlify build --filter=@lobehub/lobehub
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NODE_OPTIONS: "--max-old-space-size=6144"
 
       - name: Deploy to Netlify Production
-        run: npx netlify deploy --prod
+        run: npx netlify deploy --prod --filter=@lobehub/lobehub
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
