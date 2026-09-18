@@ -17,7 +17,6 @@ jobs:
         with:
           node-version: 24
 
-      # ⚡ 核心修复：安装 LobeChat 编译所必须的 Bun 环境
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -25,8 +24,7 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
+        # ⚡ 核心修复：删掉了 version: 9，让它自动根据 package.json 锁定的 pnpm v12 进行安装
 
       - name: Install Dependencies
         run: pnpm install
