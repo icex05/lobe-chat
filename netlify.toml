@@ -1,9 +1,13 @@
 [build]
-command = "rm -rf .next node_modules/.cache && pnpm run build"
-publish = ".next"
+  command = "rm -rf .next node_modules/.cache && pnpm run build"
+  publish = ".next"
 
 [build.environment]
-NODE_OPTIONS = "--max-old-space-size=4096"
+  NODE_OPTIONS = "--max-old-space-size=6144"
+  NODE_VERSION = "22"
+  # 彻底禁用 Netlify Edge Functions 接管 Next.js 中间件
+  NEXT_DISABLE_NETLIFY_EDGE = "true"
+  NEXT_DISABLE_EDGE_IMAGES = "true"
 
-[template.environment]
-OPENAI_API_KEY = "set your OpenAI API Key"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
